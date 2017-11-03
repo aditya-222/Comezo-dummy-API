@@ -1,0 +1,28 @@
+It is a REST framework based CRUD application which manipulates the questions database. url : 127.0.0.1:8000/comezo
+
+The followinG API consist of three endpoints:
+
+1. Read endpoint : It accepts only GET requests and lets you read questions based on
+	i) tags : tags can be question related subjects or anything to related to question topics. eg :   url : 127.0.0.1:8000/comezo/read/?tag=physics , will display all questions with physics tag and 		pagination is set to 3. first page will be displaying only 3 records.
+	ii) id : id is a unique key for every question. result of id search will display only a single record with the given id.   for eg : url : 127.0.0.1:8000/comezo/read?	   id=59fb28d4331a63285a5f8a5f will display the record associated with this id.
+	iii) text or substring: this is a most generic type of search and will search the questions which contains substring or word provided by the user . for eg : url : 127.0.0.1:8000/comezo/read?text=thermo  will display all questions with question_text containing thermo substring.
+
+Read endpoint is a paginated end point and the limit is set to 3 i.e there will be a max of 3 records as per query . for eg :  url : 127.0.0.1:8000/comezo/read?page=2. will display the records 4-6 in the database and so on.
+
+2. Create endpoint: This endpoint consists of adding new questions data supplied by the user and accepts only POST requests . for eg- url = 127.0.0.1:8000/comezo/create will create a new question document as per the data supplied by the user. NO validations could be made on this as per the time constraint.
+
+3. Update endpoint : This endpoint is for updating a previously existing data by searching a particular record only based on the id and accepts only POST requests. for eg url : 127.0.0.1:8000/comezo/update/?id= id=59fb28d4331a63285a5f8a5f will open the document associated with the id supplied by the user and will update according to the data supplied by the user.
+
+
+Database : MongoDB
+
+Data structure : 
+
+created_by : String 
+created_at : String
+modified_at : String
+question_text : String
+Answers : List of ans
+Tags : list of tags
+hints : String
+ 
